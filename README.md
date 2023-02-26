@@ -1,29 +1,35 @@
-# Quilt Template Mod
+# Quilt Tag Plus
 
-The official Quilt template mod. You can use it as a template for your own mods!
+<!-- modrinth_exclude.start -->
 
-## Usage
+This mod can be found on [Modrinth](https://modrinth.com/) : https://modrinth.com/mod/quilt-tag-plus
 
-In order to use this mod as a template:
+<!-- modrinth_exclude.end -->
 
-1. Create a new repository from this template with `Use this template`
-2. Clone the recently-created repo on your PC
-3. Make the necessary changes in order to make it yours:
-    - Update `gradle.properties` in order to use your Maven group and mod ID
-        - If you don't know which Maven group to use, and you are planning to host the mod's source code on GitHub, use `io.github.<Your_Username_Here>`
-    - Update `quilt.mod.json` in order to reflect your mod's metadata
-        - If you are planning to include (jar-in-jar) a mod, don't forget to declare its dependency on it!
-        - The icon provided here is a placeholder one. If you aren't able to replace it yet, you can delete it and remove the "icon" property
-    - Create a LICENSE file for this mod! If you don't know which license to use, check out [here](https://choosealicense.com/).
-        - If you use `LICENSE.md`, don't forget to update the buildscript in order to use that file name!
-        - In `quilt.mod.json`, don't forget to put the license's [SPDX identifier](https://spdx.org/licenses/) under the `"license"` property in `"metadata"`.
-        - The GPLv3 and AGPLv3 are not valid mod licenses, so you can use almost any license except for those.
-    - Update the Java sub-directory structure so it reflects your Maven group
-    - If the dependencies on `gradle/libs.versions.toml` isn't up-to-date, feel free to update them! The [linked utility](https://lambdaurora.dev/tools/import_quilt.html) should help you in this easy and quick process.
-4. The mod is now ready to be worked on!
+This mod adds several tags to improve the control of some basic Minecraft features.
 
-## License
+This can be usefull for compatibility (this avoids possible conflicts with Mixin).
 
-This template on the QuiltMC GitHub is licensed under the [Creative Common Zero v1.0 license](./LICENSE-TEMPLATE.md).
+## Content
 
-Mods created with this template are not automatically licensed under the CC0, and are not required to give any kind of credit back to QuiltMC for this template.
+### Block Tags
+
+**Block Tags are located in `data/quilt_tag_plus/tags/blocks` folder**
+
+- `cactus_plantable_on` which controls which blocks a cactus can be placed on
+- `chorus_plantable_on` which controls which blocks a chorus plant can be placed on
+- `nether_wart_plantable_on`which controls which blocks a nether wart can be placed on
+- `sugar_cane_plantable_on`which controls which blocks a sugar cane can be placed on
+
+### Item Tags
+
+**Item Tags are located in `data/quilt_tag_plus/tags/items` folder**
+
+- `animal_breeding` which controls which items can be used to breed animals
+- `iron_golem_healing` which controls which items can be used to heal Iron Golem
+- `minecart_furnace_fuel` which controls which items can be used for Minecart with Furnace
+- `respawn_anchor_charges` which controls which items can be used to fill respawn anchor
+
+## Credits
+
+- Logo by [QuiltMC](https://quiltmc.org) : https://github.com/QuiltMC/art
