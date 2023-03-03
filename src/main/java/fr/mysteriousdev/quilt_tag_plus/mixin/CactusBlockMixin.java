@@ -11,12 +11,12 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(CactusBlock.class)
 public class CactusBlockMixin {
 	@Redirect(method = "canPlaceAt", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isOf(Lnet/minecraft/block/Block;)Z", ordinal = 1))
-	private boolean canPlantOnTop(BlockState instance, Block block) {
+	private boolean canPlaceAt1(BlockState instance, Block block) {
 		return instance.isIn(ModBlockTags.CACTUS_PLANTABLE_ON);
 	}
 
 	@Redirect(method = "canPlaceAt", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isOf(Lnet/minecraft/block/Block;)Z", ordinal = 2))
-	private boolean canPlantOnTop2(BlockState instance, Block block) {
+	private boolean canPlaceAt2(BlockState instance, Block block) {
 		return false;
 	}
 }

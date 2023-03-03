@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(ChorusPlantFeature.class)
 public class ChorusPlantFeatureMixin {
 	@Redirect(method = "place", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;isOf(Lnet/minecraft/block/Block;)Z", ordinal = 0))
-	private boolean getStateForNeighborUpdate(BlockState instance, Block block) {
+	private boolean place(BlockState instance, Block block) {
 		return instance.isIn(ModBlockTags.CHORUS_PLANTABLE_ON);
 	}
 }

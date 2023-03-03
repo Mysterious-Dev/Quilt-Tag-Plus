@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(AnimalEntity.class)
 public class AnimalEntityMixin {
 	@Redirect(method = "isBreedingItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;isOf(Lnet/minecraft/item/Item;)Z"))
-	private boolean interactMob(ItemStack instance, Item item) {
+	private boolean isBreedingItem(ItemStack instance, Item item) {
 		return instance.isIn(ModItemTags.ANIMAL_BREEDING);
 	}
 }

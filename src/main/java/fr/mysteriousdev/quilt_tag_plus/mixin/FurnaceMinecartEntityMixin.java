@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(FurnaceMinecartEntity.class)
 public class FurnaceMinecartEntityMixin {
 	@Redirect(method = "interact", at = @At(value = "INVOKE", target = "Lnet/minecraft/recipe/Ingredient;test(Lnet/minecraft/item/ItemStack;)Z"))
-	private boolean interactMob(Ingredient instance, ItemStack itemStack) {
+	private boolean interact(Ingredient instance, ItemStack itemStack) {
 		return itemStack.isIn(ModItemTags.MINECART_FURNACE_FUEL);
 	}
 }
