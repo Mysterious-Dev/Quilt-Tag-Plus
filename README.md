@@ -29,6 +29,7 @@ This can be usefull for compatibility (this avoids possible conflicts with Mixin
 - `iron_golem_healing` which controls which items can be used to heal Iron Golem
 - `minecart_furnace_fuel` which controls which items can be used for Minecart with Furnace
 - `respawn_anchor_charges` which controls which items can be used to fill respawn anchor
+- `tnt_igniters` which controls which items can be used to ignite Tnt Block
 
 ## Credits
 

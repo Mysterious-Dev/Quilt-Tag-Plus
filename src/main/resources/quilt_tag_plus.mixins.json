@@ -13,7 +13,8 @@
       "IronGolemEntityMixin",
       "SugarCaneBlockMixin",
       "FurnaceMinecartEntityMixin",
-      "AnimalEntityMixin"
+      "AnimalEntityMixin",
+      "TntBlockMixin"
     ],
 	"client": [],
 	"injectors": {
