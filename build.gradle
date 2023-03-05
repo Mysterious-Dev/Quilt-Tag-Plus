@@ -4,6 +4,21 @@ plugins {
 	id "com.modrinth.minotaur" version "2.+"
 }
 
+modrinth {
+	token = System.getenv("MODRINTH_TOKEN")
+	projectId = "quilt-tag-plus"
+	versionName = "Quilt Tag Plus ${project.version}"
+	changelog = rootProject.file("CHANGELOG.md").text
+	versionType = "alpha"
+	uploadFile = jar
+	gameVersions = ["${libs.versions.minecraft.get()}"]
+	loaders = ["quilt"]
+	dependencies {
+		required.project "qsl" // Creates a new required dependency on Fabric API
+	}
+	syncBodyFrom = rootProject.file("README.md").text
+}
+
 archivesBaseName = project.archives_base_name
 version = "${project.version}+${libs.versions.minecraft.get()}"
 group = project.maven_group
@@ -86,19 +101,4 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
-}
-
-modrinth {
-	token = System.getenv("MODRINTH_TOKEN")
-	projectId = "quilt-tag-plus"
-	versionName = "Quilt Tag Plus ${project.version}"
-	changelog = rootProject.file("CHANGELOG.md").text
-	versionType = "alpha"
-	uploadFile = jar
-	gameVersions = ["${libs.versions.minecraft.get()}"]
-	loaders = ["quilt"]
-	dependencies {
-		required.project "qsl" // Creates a new required dependency on Fabric API
-	}
-	syncBodyFrom = rootProject.file("README.md").text
 }
