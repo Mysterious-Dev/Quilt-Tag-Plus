@@ -20,6 +20,7 @@ This can be usefull for compatibility (this avoids possible conflicts with Mixin
 - `chorus_plantable_on` which controls which blocks a chorus plant can be placed on
 - `nether_wart_plantable_on`which controls which blocks a nether wart can be placed on
 - `sugar_cane_plantable_on`which controls which blocks a sugar cane can be placed on
+- `wither_rose_plantable_on`which controls which blocks a wither rose can be placed on
 
 ### Item Tags
 

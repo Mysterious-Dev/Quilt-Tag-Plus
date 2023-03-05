@@ -14,7 +14,8 @@
       "SugarCaneBlockMixin",
       "FurnaceMinecartEntityMixin",
       "AnimalEntityMixin",
-      "TntBlockMixin"
+      "TntBlockMixin",
+      "WitherRoseBlockMixin"
     ],
 	"client": [],
 	"injectors": {
