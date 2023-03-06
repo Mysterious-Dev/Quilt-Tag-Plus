@@ -19,7 +19,10 @@
 		},
 		"intermediate_mappings": "net.fabricmc:intermediary",
 		"entrypoints": {
-			"init": "fr.mysteriousdev.quilt_tag_plus.Main"
+			"init": "fr.mysteriousdev.quilt_tag_plus.Main",
+			"quilt:game_test": [
+				"fr.mysteriousdev.quilt_tag_plus.tests.BlockTagTests"
+			]
 		},
 		"depends": [
 			{
