@@ -42,4 +42,18 @@ public class BlockTagTests implements QuiltGameTest {
 			context.expectBlock(Blocks.CACTUS, new BlockPos(3,3,2));
 		});
 	}
+
+	@GameTest(structureName = "sugar_cane_plantable_on")
+	public void sugarCanePlantableOn(QuiltTestContext context) {
+
+		PlayerEntity player = context.createMockPlayer();
+
+		context.useStackOnBlockAt(player, new ItemStack(Blocks.SUGAR_CANE), new BlockPos(2, 3, 1), Direction.UP);
+		context.useStackOnBlockAt(player, new ItemStack(Blocks.SUGAR_CANE), new BlockPos(3, 3, 1), Direction.UP);
+
+		context.succeedWhen(()-> {
+			context.expectBlock(Blocks.SUGAR_CANE, new BlockPos(2,3,1));
+			context.expectBlock(Blocks.SUGAR_CANE, new BlockPos(3,3,1));
+		});
+	}
 }
