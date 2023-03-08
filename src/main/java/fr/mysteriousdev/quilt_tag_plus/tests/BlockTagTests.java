@@ -4,6 +4,7 @@ import fr.mysteriousdev.quilt_tag_plus.Main;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.test.GameTest;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -18,9 +19,9 @@ public class BlockTagTests implements QuiltGameTest {
 
 		PlayerEntity player = context.createMockPlayer();
 
-		context.useStackOnBlockAt(player, new ItemStack(Blocks.WITHER_ROSE), new BlockPos(1, 3, 2), Direction.UP);
-		context.useStackOnBlockAt(player, new ItemStack(Blocks.WITHER_ROSE), new BlockPos(2, 3, 2), Direction.UP);
-		context.useStackOnBlockAt(player, new ItemStack(Blocks.WITHER_ROSE), new BlockPos(3, 3, 2), Direction.UP);
+		context.useStackOnBlockAt(player, new ItemStack(Items.WITHER_ROSE), new BlockPos(1, 3, 2), Direction.UP);
+		context.useStackOnBlockAt(player, new ItemStack(Items.WITHER_ROSE), new BlockPos(2, 3, 2), Direction.UP);
+		context.useStackOnBlockAt(player, new ItemStack(Items.WITHER_ROSE), new BlockPos(3, 3, 2), Direction.UP);
 
 		context.succeedWhen(()-> {
 			context.expectBlock(Blocks.WITHER_ROSE, new BlockPos(1,3,2));
@@ -34,8 +35,8 @@ public class BlockTagTests implements QuiltGameTest {
 
 		PlayerEntity player = context.createMockPlayer();
 
-		context.useStackOnBlockAt(player, new ItemStack(Blocks.CACTUS), new BlockPos(1, 3, 2), Direction.UP);
-		context.useStackOnBlockAt(player, new ItemStack(Blocks.CACTUS), new BlockPos(3, 3, 2), Direction.UP);
+		context.useStackOnBlockAt(player, new ItemStack(Items.CACTUS), new BlockPos(1, 3, 2), Direction.UP);
+		context.useStackOnBlockAt(player, new ItemStack(Items.CACTUS), new BlockPos(3, 3, 2), Direction.UP);
 
 		context.succeedWhen(()-> {
 			context.expectBlock(Blocks.CACTUS, new BlockPos(1,3,2));
@@ -48,12 +49,24 @@ public class BlockTagTests implements QuiltGameTest {
 
 		PlayerEntity player = context.createMockPlayer();
 
-		context.useStackOnBlockAt(player, new ItemStack(Blocks.SUGAR_CANE), new BlockPos(2, 3, 1), Direction.UP);
-		context.useStackOnBlockAt(player, new ItemStack(Blocks.SUGAR_CANE), new BlockPos(3, 3, 1), Direction.UP);
+		context.useStackOnBlockAt(player, new ItemStack(Items.SUGAR_CANE), new BlockPos(2, 3, 1), Direction.UP);
+		context.useStackOnBlockAt(player, new ItemStack(Items.SUGAR_CANE), new BlockPos(3, 3, 1), Direction.UP);
 
 		context.succeedWhen(()-> {
 			context.expectBlock(Blocks.SUGAR_CANE, new BlockPos(2,3,1));
 			context.expectBlock(Blocks.SUGAR_CANE, new BlockPos(3,3,1));
+		});
+	}
+
+	@GameTest(structureName = "nether_wart_plantable_on")
+	public void netherWartPlantableOn(QuiltTestContext context) {
+
+		PlayerEntity player = context.createMockPlayer();
+
+		context.useStackOnBlockAt(player, new ItemStack(Items.NETHER_WART), new BlockPos(1, 3, 1), Direction.UP);
+
+		context.succeedWhen(()-> {
+			context.expectBlock(Blocks.NETHER_WART, new BlockPos(1,3,1));
 		});
 	}
 }
