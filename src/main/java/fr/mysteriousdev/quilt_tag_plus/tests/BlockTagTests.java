@@ -69,4 +69,16 @@ public class BlockTagTests implements QuiltGameTest {
 			context.expectBlock(Blocks.NETHER_WART, new BlockPos(1,3,1));
 		});
 	}
+
+	@GameTest(structureName = "chorus_plantable_on")
+	public void chorusPlantableOn(QuiltTestContext context) {
+
+		PlayerEntity player = context.createMockPlayer();
+
+		context.useStackOnBlockAt(player, new ItemStack(Items.CHORUS_FLOWER), new BlockPos(1, 3, 1), Direction.UP);
+
+		context.succeedWhen(()-> {
+			context.expectBlock(Blocks.CHORUS_FLOWER, new BlockPos(1,3,1));
+		});
+	}
 }
