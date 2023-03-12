@@ -29,13 +29,26 @@ public class ItemTagTests implements QuiltGameTest {
 		player.getInventory().setStack(0, new ItemStack(Items.FLINT_AND_STEEL));
 		context.useBlock(new BlockPos(2,2,2), player);
 
-		player.getInventory().selectedSlot = 0;
 		player.getInventory().setStack(0, new ItemStack(Items.FIRE_CHARGE));
 		context.useBlock(new BlockPos(4,2,2), player);
 
 		context.succeedWhen(()-> {
 			context.expectBlock(Blocks.AIR, new BlockPos(2,2,2));
 			context.expectBlock(Blocks.AIR, new BlockPos(4,2,2));
+		});
+	}
+
+	@GameTest(structureName = "respawn_anchor_charges")
+	public void respawnAnchorCharges(QuiltTestContext context) {
+
+		PlayerEntity player = context.createMockSurvivalPlayer();
+
+		player.getInventory().selectedSlot = 0;
+		player.getInventory().setStack(0, new ItemStack(Items.GLOWSTONE));
+		context.useBlock(new BlockPos(1,2,1), player);
+
+		context.succeedWhen(()-> {
+			context.expectBlockProperty(new BlockPos(1,2,1), Properties.CHARGES, 1);
 		});
 	}
 }
