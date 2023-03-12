@@ -59,6 +59,19 @@ processResources {
 	}
 }
 
+loom {
+	runs {
+		gameTestServer {
+			server()
+			source(sourceSets.main)
+			configName = "Game test server"
+			property("quilt.game_test", "true")
+			property("quilt.game_test.report_file", "${project.buildDir}/game_test/report.xml")
+			runDir("build/game_test")
+		}
+	}
+}
+
 tasks.withType(JavaCompile).configureEach {
 	it.options.encoding = 'UTF-8'
 	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
