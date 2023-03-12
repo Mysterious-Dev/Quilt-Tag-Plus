@@ -95,4 +95,23 @@ public class ItemTagTests implements QuiltGameTest {
 			}, "Iron golem health must be 100");
 		});
 	}
+
+	@GameTest(structureName = "animal_breeding")
+	public void animalBreeding(QuiltTestContext context) {
+
+		PlayerEntity player = context.createMockPlayer();
+
+		LivingEntity cowOneEntity = context.spawnEntity(EntityType.COW, new BlockPos(1,2,2));
+		LivingEntity cowTwoEntity = context.spawnEntity(EntityType.COW, new BlockPos(3,2,2));
+
+		player.getInventory().setStack(0, new ItemStack(Items.WHEAT));
+		cowOneEntity.interact(player, Hand.MAIN_HAND);
+
+		player.getInventory().setStack(0, new ItemStack(Items.WHEAT));
+		cowTwoEntity.interact(player, Hand.MAIN_HAND);
+
+		context.succeedWhen(()-> {
+			context.expectEntitiesAround(EntityType.COW, new BlockPos(2,2,2), 3, 3);
+		});
+	}
 }
