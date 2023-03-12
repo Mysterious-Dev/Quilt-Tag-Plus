@@ -57,23 +57,25 @@ public class ItemTagTests implements QuiltGameTest {
 
 		BlockPos actualPos = context.getAbsolutePos(new BlockPos(2,2,0));
 
+		EntityType cowEntityType = EntityType.FURNACE_MINECART;
+
 		player.setPos(actualPos.getX(), actualPos.getY(), actualPos.getZ());
 		player.setHeadYaw(0);
 
-		Entity minecraftOne = context.spawnEntity(EntityType.FURNACE_MINECART, new BlockPos(1,2,1));
+		Entity minecraftOne = context.spawnEntity(cowEntityType, new BlockPos(1,2,1));
 
 		player.getInventory().selectedSlot = 0;
 		player.getInventory().setStack(0, new ItemStack(Items.COAL));
 		minecraftOne.interact(player, Hand.MAIN_HAND);
 
-		Entity minecraftTwo = context.spawnEntity(EntityType.FURNACE_MINECART, new BlockPos(3,2,1));
+		Entity minecraftTwo = context.spawnEntity(cowEntityType, new BlockPos(3,2,1));
 
 		player.getInventory().setStack(0, new ItemStack(Items.CHARCOAL));
 		minecraftTwo.interact(player, Hand.MAIN_HAND);
 
 		context.succeedWhen(()-> {
-			context.expectEntityAt(EntityType.FURNACE_MINECART, new BlockPos(1,2,3));
-			context.expectEntityAt(EntityType.FURNACE_MINECART, new BlockPos(3,2,3));
+			context.expectEntityAt(cowEntityType, new BlockPos(1,2,3));
+			context.expectEntityAt(cowEntityType, new BlockPos(3,2,3));
 		});
 	}
 
@@ -86,6 +88,7 @@ public class ItemTagTests implements QuiltGameTest {
 
 		ironGolemEntity.setHealth(75);
 
+		player.getInventory().selectedSlot = 0;
 		player.getInventory().setStack(0, new ItemStack(Items.IRON_INGOT));
 		ironGolemEntity.interact(player, Hand.MAIN_HAND);
 
@@ -104,10 +107,8 @@ public class ItemTagTests implements QuiltGameTest {
 		LivingEntity cowOneEntity = context.spawnEntity(EntityType.COW, new BlockPos(1,2,2));
 		LivingEntity cowTwoEntity = context.spawnEntity(EntityType.COW, new BlockPos(3,2,2));
 
-		player.getInventory().setStack(0, new ItemStack(Items.WHEAT));
+		player.getInventory().setStack(0, new ItemStack(Items.WHEAT, 2));
 		cowOneEntity.interact(player, Hand.MAIN_HAND);
-
-		player.getInventory().setStack(0, new ItemStack(Items.WHEAT));
 		cowTwoEntity.interact(player, Hand.MAIN_HAND);
 
 		context.succeedWhen(()-> {

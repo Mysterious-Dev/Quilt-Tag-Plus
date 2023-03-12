@@ -19,9 +19,11 @@ public class BlockTagTests implements QuiltGameTest {
 
 		PlayerEntity player = context.createMockPlayer();
 
-		context.useStackOnBlockAt(player, new ItemStack(Items.WITHER_ROSE), new BlockPos(1, 3, 2), Direction.UP);
-		context.useStackOnBlockAt(player, new ItemStack(Items.WITHER_ROSE), new BlockPos(2, 3, 2), Direction.UP);
-		context.useStackOnBlockAt(player, new ItemStack(Items.WITHER_ROSE), new BlockPos(3, 3, 2), Direction.UP);
+		ItemStack witherRoseStack = new ItemStack(Items.WITHER_ROSE);
+
+		context.useStackOnBlockAt(player, witherRoseStack, new BlockPos(1, 3, 2), Direction.UP);
+		context.useStackOnBlockAt(player, witherRoseStack, new BlockPos(2, 3, 2), Direction.UP);
+		context.useStackOnBlockAt(player, witherRoseStack, new BlockPos(3, 3, 2), Direction.UP);
 
 		context.succeedWhen(()-> {
 			context.expectBlock(Blocks.WITHER_ROSE, new BlockPos(1,3,2));
@@ -35,8 +37,10 @@ public class BlockTagTests implements QuiltGameTest {
 
 		PlayerEntity player = context.createMockPlayer();
 
-		context.useStackOnBlockAt(player, new ItemStack(Items.CACTUS), new BlockPos(1, 3, 2), Direction.UP);
-		context.useStackOnBlockAt(player, new ItemStack(Items.CACTUS), new BlockPos(3, 3, 2), Direction.UP);
+		ItemStack cactusStack = new ItemStack(Items.CACTUS);
+
+		context.useStackOnBlockAt(player, cactusStack, new BlockPos(1, 3, 2), Direction.UP);
+		context.useStackOnBlockAt(player, cactusStack, new BlockPos(3, 3, 2), Direction.UP);
 
 		context.succeedWhen(()-> {
 			context.expectBlock(Blocks.CACTUS, new BlockPos(1,3,2));
@@ -49,8 +53,10 @@ public class BlockTagTests implements QuiltGameTest {
 
 		PlayerEntity player = context.createMockPlayer();
 
-		context.useStackOnBlockAt(player, new ItemStack(Items.SUGAR_CANE), new BlockPos(2, 3, 1), Direction.UP);
-		context.useStackOnBlockAt(player, new ItemStack(Items.SUGAR_CANE), new BlockPos(3, 3, 1), Direction.UP);
+		ItemStack sugarCaneStack = new ItemStack(Items.SUGAR_CANE);
+
+		context.useStackOnBlockAt(player, sugarCaneStack, new BlockPos(2, 3, 1), Direction.UP);
+		context.useStackOnBlockAt(player, sugarCaneStack, new BlockPos(3, 3, 1), Direction.UP);
 
 		context.succeedWhen(()-> {
 			context.expectBlock(Blocks.SUGAR_CANE, new BlockPos(2,3,1));
