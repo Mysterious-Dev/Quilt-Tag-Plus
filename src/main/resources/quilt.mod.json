@@ -21,7 +21,8 @@
 		"entrypoints": {
 			"init": "fr.mysteriousdev.quilt_tag_plus.Main",
 			"quilt:game_test": [
-				"fr.mysteriousdev.quilt_tag_plus.tests.BlockTagTests"
+				"fr.mysteriousdev.quilt_tag_plus.tests.BlockTagTests",
+				"fr.mysteriousdev.quilt_tag_plus.tests.ItemTagTests"
 			]
 		},
 		"depends": [
