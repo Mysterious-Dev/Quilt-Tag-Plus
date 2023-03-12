@@ -4,6 +4,7 @@ import fr.mysteriousdev.quilt_tag_plus.Main;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -63,18 +64,35 @@ public class ItemTagTests implements QuiltGameTest {
 
 		player.getInventory().selectedSlot = 0;
 		player.getInventory().setStack(0, new ItemStack(Items.COAL));
-		context.useBlock(new BlockPos(1,2,1), player);
 		minecraftOne.interact(player, Hand.MAIN_HAND);
 
 		Entity minecraftTwo = context.spawnEntity(EntityType.FURNACE_MINECART, new BlockPos(3,2,1));
 
 		player.getInventory().setStack(0, new ItemStack(Items.CHARCOAL));
-		context.useBlock(new BlockPos(3,2,1), player);
 		minecraftTwo.interact(player, Hand.MAIN_HAND);
 
 		context.succeedWhen(()-> {
 			context.expectEntityAt(EntityType.FURNACE_MINECART, new BlockPos(1,2,3));
 			context.expectEntityAt(EntityType.FURNACE_MINECART, new BlockPos(3,2,3));
+		});
+	}
+
+	@GameTest(structureName = "iron_golem_healing")
+	public void ironGolemHealing(QuiltTestContext context) {
+
+		PlayerEntity player = context.createMockPlayer();
+
+		LivingEntity ironGolemEntity = context.spawnEntity(EntityType.IRON_GOLEM, new BlockPos(3,3,3));
+
+		ironGolemEntity.setHealth(75);
+
+		player.getInventory().setStack(0, new ItemStack(Items.IRON_INGOT));
+		ironGolemEntity.interact(player, Hand.MAIN_HAND);
+
+		context.succeedWhen(()-> {
+			context.checkEntity(ironGolemEntity, (entity) -> {
+				return entity.getHealth() == 100;
+			}, "Iron golem health must be 100");
 		});
 	}
 }
