@@ -5,6 +5,10 @@ on:
   pull_request:
     branches: ['*']
 
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     name: Build
@@ -15,4 +19,14 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: 17
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/jdks
+            ~/.gradle/native
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', 'gradle/**', 'gradle.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
       - run: ./gradlew runGameTestServer --no-daemon --stacktrace
