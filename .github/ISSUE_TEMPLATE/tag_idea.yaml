@@ -1,0 +1,15 @@
+name: Idea for new tag
+description: Suggest an idea for a tag to added
+labels: ["tag idea"]
+body:
+  - type: input
+    id: minecraft-version
+    attributes:
+      label: Version of Minecraft
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of the tag and his behavior
+      description: The more information you can provide for the type of tag and what it would be used for is welcome ^^.
