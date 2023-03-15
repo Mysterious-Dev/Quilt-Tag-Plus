@@ -1,3 +1,4 @@
 ## Modifications
 
-- Update to Minecraft 1.19.4-rc2
+- Update Minecraft to 1.19.4
+- Update required loader to 0.18.5
