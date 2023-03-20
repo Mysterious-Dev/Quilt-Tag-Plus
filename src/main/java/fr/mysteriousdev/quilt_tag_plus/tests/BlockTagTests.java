@@ -13,7 +13,7 @@ import org.quiltmc.qsl.testing.api.game.QuiltGameTest;
 import org.quiltmc.qsl.testing.api.game.QuiltTestContext;
 import org.quiltmc.qsl.testing.api.game.TestStructureNamePrefix;
 
-@TestStructureNamePrefix(Main.MODID + ":")
+@TestStructureNamePrefix(Main.MODID + ":block/")
 public class BlockTagTests implements QuiltGameTest {
 	@GameTest(structureName = "azalea_plantable_on")
 	public void azaleaPlantableOn(QuiltTestContext context) {

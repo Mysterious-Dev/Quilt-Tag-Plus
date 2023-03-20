@@ -16,7 +16,7 @@ import org.quiltmc.qsl.testing.api.game.QuiltGameTest;
 import org.quiltmc.qsl.testing.api.game.QuiltTestContext;
 import org.quiltmc.qsl.testing.api.game.TestStructureNamePrefix;
 
-@TestStructureNamePrefix(Main.MODID + ":")
+@TestStructureNamePrefix(Main.MODID + ":item/")
 public class ItemTagTests implements QuiltGameTest {
 	@GameTest(structureName = "animal_breeding")
 	public void animalBreeding(QuiltTestContext context) {
