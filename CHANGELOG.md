@@ -1,4 +1,3 @@
-## Modifications
+## Additions
 
-- Update Minecraft to 1.19.4
-- Update required loader to 0.18.5
+- Add `azalea_plantable_on` tag for Azalea & Flowering Azalea (contains Clay)
