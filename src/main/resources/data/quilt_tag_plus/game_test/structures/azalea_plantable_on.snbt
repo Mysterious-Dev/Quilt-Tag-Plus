@@ -21,13 +21,13 @@
         {pos: [0, 1, 1], state: "minecraft:air"},
         {pos: [0, 1, 2], state: "minecraft:air"},
         {pos: [1, 1, 0], state: "minecraft:air"},
-        {pos: [1, 1, 1], state: "minecraft:soul_sand"},
+        {pos: [1, 1, 1], state: "minecraft:clay"},
         {pos: [1, 1, 2], state: "minecraft:air"},
         {pos: [2, 1, 0], state: "minecraft:air"},
-        {pos: [2, 1, 1], state: "minecraft:soul_soil"},
+        {pos: [2, 1, 1], state: "minecraft:air"},
         {pos: [2, 1, 2], state: "minecraft:air"},
         {pos: [3, 1, 0], state: "minecraft:air"},
-        {pos: [3, 1, 1], state: "minecraft:netherrack"},
+        {pos: [3, 1, 1], state: "minecraft:clay"},
         {pos: [3, 1, 2], state: "minecraft:air"},
         {pos: [4, 1, 0], state: "minecraft:air"},
         {pos: [4, 1, 1], state: "minecraft:air"},
@@ -66,9 +66,7 @@
     entities: [],
     palette: [
         "minecraft:polished_andesite",
-        "minecraft:soul_soil",
-        "minecraft:netherrack",
-        "minecraft:air",
-        "minecraft:soul_sand"
+        "minecraft:clay",
+        "minecraft:air"
     ]
 }

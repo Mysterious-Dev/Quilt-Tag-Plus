@@ -14,6 +14,20 @@ import org.quiltmc.qsl.testing.api.game.TestStructureNamePrefix;
 
 @TestStructureNamePrefix(Main.MODID + ":")
 public class BlockTagTests implements QuiltGameTest {
+	@GameTest(structureName = "azalea_plantable_on")
+	public void azaleaPlantableOn(QuiltTestContext context) {
+
+		PlayerEntity player = context.createMockPlayer();
+
+		context.useStackOnBlockAt(player, new ItemStack(Items.AZALEA), new BlockPos(1, 3, 1), Direction.UP);
+		context.useStackOnBlockAt(player, new ItemStack(Items.FLOWERING_AZALEA), new BlockPos(3, 3, 1), Direction.UP);
+
+		context.succeedWhen(()-> {
+			context.expectBlock(Blocks.AZALEA, new BlockPos(1,3,1));
+			context.expectBlock(Blocks.FLOWERING_AZALEA, new BlockPos(3,3,1));
+		});
+	}
+
 	@GameTest(structureName = "wither_rose_plantable_on")
 	public void witherRosePlantableOn(QuiltTestContext context) {
 
@@ -21,14 +35,14 @@ public class BlockTagTests implements QuiltGameTest {
 
 		ItemStack witherRoseStack = new ItemStack(Items.WITHER_ROSE);
 
-		context.useStackOnBlockAt(player, witherRoseStack, new BlockPos(1, 3, 2), Direction.UP);
-		context.useStackOnBlockAt(player, witherRoseStack, new BlockPos(2, 3, 2), Direction.UP);
-		context.useStackOnBlockAt(player, witherRoseStack, new BlockPos(3, 3, 2), Direction.UP);
+		context.useStackOnBlockAt(player, witherRoseStack, new BlockPos(1, 3, 1), Direction.UP);
+		context.useStackOnBlockAt(player, witherRoseStack, new BlockPos(2, 3, 1), Direction.UP);
+		context.useStackOnBlockAt(player, witherRoseStack, new BlockPos(3, 3, 1), Direction.UP);
 
 		context.succeedWhen(()-> {
-			context.expectBlock(Blocks.WITHER_ROSE, new BlockPos(1,3,2));
-			context.expectBlock(Blocks.WITHER_ROSE, new BlockPos(2,3,2));
-			context.expectBlock(Blocks.WITHER_ROSE, new BlockPos(3,3,2));
+			context.expectBlock(Blocks.WITHER_ROSE, new BlockPos(1,3,1));
+			context.expectBlock(Blocks.WITHER_ROSE, new BlockPos(2,3,1));
+			context.expectBlock(Blocks.WITHER_ROSE, new BlockPos(3,3,1));
 		});
 	}
 
@@ -39,12 +53,12 @@ public class BlockTagTests implements QuiltGameTest {
 
 		ItemStack cactusStack = new ItemStack(Items.CACTUS);
 
-		context.useStackOnBlockAt(player, cactusStack, new BlockPos(1, 3, 2), Direction.UP);
-		context.useStackOnBlockAt(player, cactusStack, new BlockPos(3, 3, 2), Direction.UP);
+		context.useStackOnBlockAt(player, cactusStack, new BlockPos(1, 3, 1), Direction.UP);
+		context.useStackOnBlockAt(player, cactusStack, new BlockPos(3, 3, 1), Direction.UP);
 
 		context.succeedWhen(()-> {
-			context.expectBlock(Blocks.CACTUS, new BlockPos(1,3,2));
-			context.expectBlock(Blocks.CACTUS, new BlockPos(3,3,2));
+			context.expectBlock(Blocks.CACTUS, new BlockPos(1,3,1));
+			context.expectBlock(Blocks.CACTUS, new BlockPos(3,3,1));
 		});
 	}
 
