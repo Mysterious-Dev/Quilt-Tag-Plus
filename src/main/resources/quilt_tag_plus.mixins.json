@@ -10,6 +10,7 @@
       "ChorusFlowerBlockMixin",
       "ChorusPlantBlockMixin",
       "ChorusPlantFeatureMixin",
+      "EndCrystalItemMixin",
       "FurnaceMinecartEntityMixin",
       "IronGolemEntityMixin",
       "NetherWartBlockMixin",

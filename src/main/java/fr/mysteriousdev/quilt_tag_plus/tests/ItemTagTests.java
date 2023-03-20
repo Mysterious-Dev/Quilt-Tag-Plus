@@ -18,35 +18,40 @@ import org.quiltmc.qsl.testing.api.game.TestStructureNamePrefix;
 
 @TestStructureNamePrefix(Main.MODID + ":")
 public class ItemTagTests implements QuiltGameTest {
-	@GameTest(structureName = "tnt_igniters")
-	public void tntIgniters(QuiltTestContext context) {
+	@GameTest(structureName = "animal_breeding")
+	public void animalBreeding(QuiltTestContext context) {
 
-		PlayerEntity player = context.createMockSurvivalPlayer();
+		PlayerEntity player = context.createMockPlayer();
 
-		player.getInventory().selectedSlot = 0;
-		player.getInventory().setStack(0, new ItemStack(Items.FLINT_AND_STEEL));
-		context.useBlock(new BlockPos(2,2,2), player);
+		LivingEntity cowOneEntity = context.spawnEntity(EntityType.COW, new BlockPos(1,2,2));
+		LivingEntity cowTwoEntity = context.spawnEntity(EntityType.COW, new BlockPos(3,2,2));
 
-		player.getInventory().setStack(0, new ItemStack(Items.FIRE_CHARGE));
-		context.useBlock(new BlockPos(4,2,2), player);
+		player.getInventory().setStack(0, new ItemStack(Items.WHEAT, 2));
+		cowOneEntity.interact(player, Hand.MAIN_HAND);
+		cowTwoEntity.interact(player, Hand.MAIN_HAND);
 
 		context.succeedWhen(()-> {
-			context.expectBlock(Blocks.AIR, new BlockPos(2,2,2));
-			context.expectBlock(Blocks.AIR, new BlockPos(4,2,2));
+			context.expectEntitiesAround(EntityType.COW, new BlockPos(2,2,2), 3, 3);
 		});
 	}
 
-	@GameTest(structureName = "respawn_anchor_charges")
-	public void respawnAnchorCharges(QuiltTestContext context) {
+	@GameTest(structureName = "iron_golem_healing")
+	public void ironGolemHealing(QuiltTestContext context) {
 
-		PlayerEntity player = context.createMockSurvivalPlayer();
+		PlayerEntity player = context.createMockPlayer();
+
+		LivingEntity ironGolemEntity = context.spawnEntity(EntityType.IRON_GOLEM, new BlockPos(3,3,3));
+
+		ironGolemEntity.setHealth(75);
 
 		player.getInventory().selectedSlot = 0;
-		player.getInventory().setStack(0, new ItemStack(Items.GLOWSTONE));
-		context.useBlock(new BlockPos(1,2,1), player);
+		player.getInventory().setStack(0, new ItemStack(Items.IRON_INGOT));
+		ironGolemEntity.interact(player, Hand.MAIN_HAND);
 
 		context.succeedWhen(()-> {
-			context.expectBlockProperty(new BlockPos(1,2,1), Properties.CHARGES, 1);
+			context.checkEntity(ironGolemEntity, (entity) -> {
+				return entity.getHealth() == 100;
+			}, "Iron golem health must be 100");
 		});
 	}
 
@@ -79,40 +84,35 @@ public class ItemTagTests implements QuiltGameTest {
 		});
 	}
 
-	@GameTest(structureName = "iron_golem_healing")
-	public void ironGolemHealing(QuiltTestContext context) {
+	@GameTest(structureName = "respawn_anchor_charges")
+	public void respawnAnchorCharges(QuiltTestContext context) {
 
-		PlayerEntity player = context.createMockPlayer();
-
-		LivingEntity ironGolemEntity = context.spawnEntity(EntityType.IRON_GOLEM, new BlockPos(3,3,3));
-
-		ironGolemEntity.setHealth(75);
+		PlayerEntity player = context.createMockSurvivalPlayer();
 
 		player.getInventory().selectedSlot = 0;
-		player.getInventory().setStack(0, new ItemStack(Items.IRON_INGOT));
-		ironGolemEntity.interact(player, Hand.MAIN_HAND);
+		player.getInventory().setStack(0, new ItemStack(Items.GLOWSTONE));
+		context.useBlock(new BlockPos(1,2,1), player);
 
 		context.succeedWhen(()-> {
-			context.checkEntity(ironGolemEntity, (entity) -> {
-				return entity.getHealth() == 100;
-			}, "Iron golem health must be 100");
+			context.expectBlockProperty(new BlockPos(1,2,1), Properties.CHARGES, 1);
 		});
 	}
 
-	@GameTest(structureName = "animal_breeding")
-	public void animalBreeding(QuiltTestContext context) {
+	@GameTest(structureName = "tnt_igniters")
+	public void tntIgniters(QuiltTestContext context) {
 
-		PlayerEntity player = context.createMockPlayer();
+		PlayerEntity player = context.createMockSurvivalPlayer();
 
-		LivingEntity cowOneEntity = context.spawnEntity(EntityType.COW, new BlockPos(1,2,2));
-		LivingEntity cowTwoEntity = context.spawnEntity(EntityType.COW, new BlockPos(3,2,2));
+		player.getInventory().selectedSlot = 0;
+		player.getInventory().setStack(0, new ItemStack(Items.FLINT_AND_STEEL));
+		context.useBlock(new BlockPos(2,2,2), player);
 
-		player.getInventory().setStack(0, new ItemStack(Items.WHEAT, 2));
-		cowOneEntity.interact(player, Hand.MAIN_HAND);
-		cowTwoEntity.interact(player, Hand.MAIN_HAND);
+		player.getInventory().setStack(0, new ItemStack(Items.FIRE_CHARGE));
+		context.useBlock(new BlockPos(4,2,2), player);
 
 		context.succeedWhen(()-> {
-			context.expectEntitiesAround(EntityType.COW, new BlockPos(2,2,2), 3, 3);
+			context.expectBlock(Blocks.AIR, new BlockPos(2,2,2));
+			context.expectBlock(Blocks.AIR, new BlockPos(4,2,2));
 		});
 	}
 }
