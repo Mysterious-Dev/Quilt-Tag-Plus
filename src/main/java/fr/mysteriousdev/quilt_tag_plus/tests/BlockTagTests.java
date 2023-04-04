@@ -85,6 +85,31 @@ public class BlockTagTests implements QuiltGameTest {
 		});
 	}
 
+	@GameTest(structureName = "not_pushable_by_piston")
+	public void notPushableByPiston(QuiltTestContext context) {
+
+		context.setBlockState(new BlockPos(1,2,1), Blocks.REDSTONE_BLOCK);
+		context.setBlockState(new BlockPos(3,2,1), Blocks.REDSTONE_BLOCK);
+		context.setBlockState(new BlockPos(5,2,1), Blocks.REDSTONE_BLOCK);
+		context.setBlockState(new BlockPos(7,2,1), Blocks.REDSTONE_BLOCK);
+
+		context.setBlockState(new BlockPos(1,2,5), Blocks.REDSTONE_BLOCK);
+		context.setBlockState(new BlockPos(3,2,5), Blocks.REDSTONE_BLOCK);
+		context.setBlockState(new BlockPos(5,2,5), Blocks.REDSTONE_BLOCK);
+		context.setBlockState(new BlockPos(7,2,5), Blocks.REDSTONE_BLOCK);
+
+		context.succeedWhen(()-> {
+			context.expectBlock(Blocks.AIR, new BlockPos(1,4,2));
+			context.expectBlock(Blocks.AIR, new BlockPos(3,4,2));
+			context.expectBlock(Blocks.AIR, new BlockPos(5,4,2));
+			context.expectBlock(Blocks.AIR, new BlockPos(7,4,2));
+			context.expectBlock(Blocks.AIR, new BlockPos(1,4,4));
+			context.expectBlock(Blocks.AIR, new BlockPos(3,4,4));
+			context.expectBlock(Blocks.AIR, new BlockPos(5,4,4));
+			context.expectBlock(Blocks.AIR, new BlockPos(7,4,4));
+		});
+	}
+
 	@GameTest(structureName = "sugar_cane_plantable_on")
 	public void sugarCanePlantableOn(QuiltTestContext context) {
 
