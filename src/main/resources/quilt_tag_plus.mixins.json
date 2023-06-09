@@ -6,7 +6,6 @@
 	"mixins": [
       "AnimalEntityMixin",
       "AzaleaBlockMixin",
-      "CactusBlockMixin",
       "ChorusFlowerBlockMixin",
       "ChorusPlantBlockMixin",
       "ChorusPlantFeatureMixin",
