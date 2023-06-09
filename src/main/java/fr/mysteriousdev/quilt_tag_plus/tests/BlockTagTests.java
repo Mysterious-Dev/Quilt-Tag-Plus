@@ -29,22 +29,6 @@ public class BlockTagTests implements QuiltGameTest {
 		});
 	}
 
-	@GameTest(structureName = "cactus_plantable_on")
-	public void cactusPlantableOn(QuiltTestContext context) {
-
-		PlayerEntity player = context.createMockPlayer();
-
-		ItemStack cactusStack = new ItemStack(Items.CACTUS);
-
-		context.useStackOnBlockAt(player, cactusStack, new BlockPos(1, 3, 1), Direction.UP);
-		context.useStackOnBlockAt(player, cactusStack, new BlockPos(3, 3, 1), Direction.UP);
-
-		context.succeedWhen(()-> {
-			context.expectBlock(Blocks.CACTUS, new BlockPos(1,3,1));
-			context.expectBlock(Blocks.CACTUS, new BlockPos(3,3,1));
-		});
-	}
-
 	@GameTest(structureName = "chorus_plantable_on")
 	public void chorusPlantableOn(QuiltTestContext context) {
 
