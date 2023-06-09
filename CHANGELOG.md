@@ -1,8 +1,8 @@
-## Additions
-
-- Add `not_pushable_by_piston` tag for Piston (contains Obsidian, Crying Obsidian, Respawn Anchor & Reinforced Deepslate)
-
 ## Modifications
 
-- Updated minimum required loader to 0.18.10 and higher
-- Updated minimum required version of QFAPI to 6.0.0-beta.3 and higher
+- Updated to Minecraft 1.20
+- Updated minimum required version of QFAPI to 7.0.1 and higher
+
+## Deletions
+
+- Delete `cactus_plantable_on` tag
