@@ -17,7 +17,6 @@ This can be usefull for compatibility (this avoids possible conflicts with Mixin
 **Block Tags are located in `data/quilt_tag_plus/tags/blocks` folder**
 
 - `azalea_plantable_on` which controls which blocks azalea's can be placed on
-- `cactus_plantable_on` which controls which blocks a cactus can be placed on
 - `chorus_plantable_on` which controls which blocks a chorus plant can be placed on
 - `end_crystal_use_on` which controls which blocks an End Crystal can be used
 - `nether_wart_plantable_on` which controls which blocks a nether wart can be placed on
