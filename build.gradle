@@ -10,7 +10,7 @@ modrinth {
 	versionName = "Quilt Tag Plus ${project.version}"
 	changelog = rootProject.file("CHANGELOG.md").text
 	versionType = "alpha"
-	uploadFile = jar
+	uploadFile = remapJar
 	gameVersions = ["${libs.versions.minecraft.get()}"]
 	loaders = ["quilt"]
 	dependencies {
